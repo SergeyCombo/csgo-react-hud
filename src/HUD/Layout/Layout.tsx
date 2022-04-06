@@ -18,6 +18,7 @@ import Tournament from "../Tournament/Tournament";
 import Pause from "../PauseTimeout/Pause";
 import Timeout from "../PauseTimeout/Timeout";
 import PlayerCamera from "../Camera/Camera";
+import TournamentLogo from "../Logo/Logo";
 
 interface Props {
   game: CSGO,
@@ -94,6 +95,7 @@ export default class Layout extends React.Component<Props, State> {
         <Pause  phase={game.phase_countdowns}/>
         <Timeout map={game.map} phase={game.phase_countdowns} />
         <SeriesBox map={game.map} phase={game.phase_countdowns} match={match} />
+        <TournamentLogo />
 
         <Tournament />
 

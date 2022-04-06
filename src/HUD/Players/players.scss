@@ -44,6 +44,9 @@
             .dead-stats {
                 right: 8px;
             }
+            .player_data {
+                border-top-right-radius: 12px;
+            }
         }
     }
     &.right {
@@ -54,6 +57,7 @@
                 left: 8px;
             }
             .player_data {
+                border-top-left-radius: 12px;
                 flex-direction: row-reverse;
                 .hp_bar {
                     align-self: flex-end;
@@ -133,9 +137,6 @@
                     }
                 }
             }
-        }
-        &:last-child .player_data {
-            border-radius: 0 0 20px 20px;
         }
         .player_side_bar {
             width: 10px;
@@ -328,10 +329,11 @@
     width: 180px;
     background-color: rgba(0,0,0,0.5);
     position: fixed;
-    right: 10px;
-    top: 10px;
+    left: 50%;
+    top: 85px;
     opacity: 1;
     transition: opacity 1s;
+    transform: translateX(-50%) scale(.7);
     .counter_container {
         display: flex;
         height: 45px;
