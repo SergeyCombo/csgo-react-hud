@@ -17,6 +17,7 @@ import Overview from "../Overview/Overview";
 import Tournament from "../Tournament/Tournament";
 import Pause from "../PauseTimeout/Pause";
 import Timeout from "../PauseTimeout/Timeout";
+// eslint-disable-next-line
 import PlayerCamera from "../Camera/Camera";
 import TournamentLogo from "../Logo/Logo";
 

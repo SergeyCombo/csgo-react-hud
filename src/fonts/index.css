@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'Blatant';
+  src: url('./blatant/latin/subset-BlatantRegular.woff2') format('woff2'),
+  url('./blatant/latin/subset-BlatantRegular.woff') format('woff'),
+  url('./blatant/latin/subset-BlatantRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blatant';
+  src: url('./blatant/latin/subset-BlatantBold.woff2') format('woff2'),
+  url('./blatant/latin/subset-BlatantBold.woff') format('woff'),
+  url('./blatant/latin/subset-BlatantBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'BlatantCyrillic';
+  src: url('./blatant/cyr/subset-Blatant-Bolditalic.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-Bolditalic.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-Bolditalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BlatantCyrillic';
+  src: url('./blatant/cyr/subset-Blatant-Regular.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-Regular.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BlatantCyrillic';
+  src: url('./blatant/cyr/subset-Blatant-Regularitalic.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-Regularitalic.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-Regularitalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BlatantCyrillic';
+  src: url('./blatant/cyr/subset-Blatant-Bold.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-Bold.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Blatant Bold UltraWeight';
+  src: url('./blatant/cyr/subset-Blatant-BoldUltraWeightitalic.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-BoldUltraWeightitalic.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-BoldUltraWeightitalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blatant Bold UltraWeight';
+  src: url('./blatant/cyr/subset-Blatant-BoldUltraWeight.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-BoldUltraWeight.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-BoldUltraWeight.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Blatant UltraWeight';
+  src: url('./blatant/cyr/subset-Blatant-RegularUltraWeight.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-RegularUltraWeight.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-RegularUltraWeight.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blatant UltraWeight';
+  src: url('./blatant/cyr/subset-Blatant-RegularUltraWeightitalic.woff2') format('woff2'),
+  url('./blatant/cyr/subset-Blatant-RegularUltraWeightitalic.woff') format('woff'),
+  url('./blatant/cyr/subset-Blatant-RegularUltraWeightitalic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
+
+
+

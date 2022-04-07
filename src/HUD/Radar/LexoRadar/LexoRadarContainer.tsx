@@ -54,7 +54,7 @@ const calculateDirection = (player: Player) => {
     directions[player.steamid] += modifier;
 
     return directions[player.steamid];
-}
+};
 
 interface IProps {
     players: Player[],
@@ -69,7 +69,7 @@ class App extends React.Component<IProps> {
     round = (n: number) => {
         const r = 0.02;
         return Math.round(n / r) * r;
-    }
+    };
 
     parsePosition = (position: number[], size: number, config: ScaleConfig) => {
         if (!(this.props.mapName in maps)) {
@@ -79,7 +79,7 @@ class App extends React.Component<IProps> {
         const top = config.origin.y + (position[1] * config.pxPerUY) - (size / 2);
 
         return [this.round(left), this.round(top)];
-    }
+    };
 
     parseGrenadePosition = (grenade: ExtendedGrenade, config: ScaleConfig) => {
         if (!("position" in grenade)) {
@@ -90,7 +90,7 @@ class App extends React.Component<IProps> {
             size = 60;
         }
         return this.parsePosition(grenade.position.split(", ").map(pos => Number(pos)), size, config);
-    }
+    };
     getGrenadePosition = (grenade: ExtendedGrenade, config: ScaleConfig) => {
         const grenadeData = grenadesStates.slice(0, 5).map(grenades => grenades.filter(gr => gr.id === grenade.id)[0]).filter(pl => !!pl);
         if (grenadeData.length === 0) return null;
@@ -105,7 +105,7 @@ class App extends React.Component<IProps> {
         }
 
         return [x / entryAmount, y / entryAmount];
-    }
+    };
     getPosition = (player: Player, mapConfig: ScaleConfig, scale: number) => {
         const playerData = playersStates.slice(0, 5).map(players => players.filter(pl => pl.steamid === player.steamid)[0]).filter(pl => !!pl);
         if (playerData.length === 0) return [0, 0];
@@ -120,7 +120,7 @@ class App extends React.Component<IProps> {
 
         const degree = calculateDirection(player);
         return [x / entryAmount, y / entryAmount, degree];
-    }
+    };
     mapPlayer = (active: Player | null) => (player: Player): RadarPlayerObject | RadarPlayerObject[] | null => {
         if (!(this.props.mapName in maps)) {
             return null;
@@ -129,7 +129,13 @@ class App extends React.Component<IProps> {
         const weapons = player.weapons ? Object.values(player.weapons) : [];
         const weapon = weapons.find(weapon => weapon.state === "active" && weapon.type !== "C4" && weapon.type !== "Knife" && weapon.type !== "Grenade");
 
-        const shooting: ShootingState = { ammo: weapon && weapon.ammo_clip || 0, weapon: weapon && weapon.name || '', lastShoot: 0 };
+        const shooting: ShootingState = {
+            // eslint-disable-next-line
+            ammo: weapon && weapon.ammo_clip || 0,
+            // eslint-disable-next-line
+            weapon: weapon && weapon.name || '',
+            lastShoot: 0
+        };
 
         const lastShoot = shootingState[player.steamid] || shooting;
 
@@ -161,7 +167,7 @@ class App extends React.Component<IProps> {
             lastShoot: shooting.lastShoot,
             scale: 1,
             player
-        }
+        };
         if ("config" in map) {
             const scale = map.config.originHeight === undefined ? 1 : (1 + (player.position[2] - map.config.originHeight) / 1000);
 
@@ -182,9 +188,9 @@ class App extends React.Component<IProps> {
                 position: this.getPosition(player, config.config, scale),
                 id: `${player.steamid}_${config.id}`,
                 visible: config.isVisible(player.position[2])
-            })
+            });
         });
-    }
+    };
     mapGrenade = (extGrenade: ExtendedGrenade) => {
         if (!(this.props.mapName in maps)) {
             return null;
@@ -204,7 +210,7 @@ class App extends React.Component<IProps> {
                     visible: config.isVisible(extGrenade.flames[id].split(", ").map(Number)[2]),
                     position: this.parsePosition(extGrenade.flames[id].split(", ").map(pos => Number(pos)), 12, config.config)
                 }));
-            }
+            };
             const flames = Object.keys(extGrenade.flames).map(mapFlame).flat();
             const flameObjects: RadarGrenadeObject[] = flames.map(flame => ({
                 ...flame,
@@ -225,7 +231,7 @@ class App extends React.Component<IProps> {
                 position,
                 id: extGrenade.id,
                 visible: true
-            }
+            };
             if (extGrenade.type === "smoke") {
                 if (extGrenade.effecttime !== "0.0") {
                     grenadeObject.state = "landed";
@@ -250,7 +256,7 @@ class App extends React.Component<IProps> {
                 position,
                 id: `${extGrenade.id}_${config.id}`,
                 visible: config.isVisible(extGrenade.position.split(", ").map(Number)[2])
-            }
+            };
             if (extGrenade.type === "smoke") {
                 if (extGrenade.effecttime !== "0.0") {
                     grenadeObject.state = "landed";
@@ -266,12 +272,13 @@ class App extends React.Component<IProps> {
             return grenadeObject;
         }).filter((grenade): grenade is RadarGrenadeObject => grenade !== null);
 
-    }
+    };
     getSideOfGrenade = (grenade: Grenade) => {
         const owner = this.props.players.find(player => player.steamid === grenade.owner);
         if (!owner) return null;
         return owner.team.side;
-    }
+    };
+
     render() {
         const players: RadarPlayerObject[] = this.props.players.map(this.mapPlayer(this.props.player)).filter((player): player is RadarPlayerObject => player !== null).flat();
         playersStates.unshift(this.props.players);
@@ -279,7 +286,11 @@ class App extends React.Component<IProps> {
             playersStates = playersStates.slice(0, 5);
         }
         let grenades: RadarGrenadeObject[] = [];
-        const currentGrenades = Object.keys(this.props.grenades as { [key: string]: Grenade }).map(grenadeId => ({ ...this.props.grenades[grenadeId], id: grenadeId, side: this.getSideOfGrenade(this.props.grenades[grenadeId]) })) as ExtendedGrenade[];
+        const currentGrenades = Object.keys(this.props.grenades as { [key: string]: Grenade }).map(grenadeId => ({
+            ...this.props.grenades[grenadeId],
+            id: grenadeId,
+            side: this.getSideOfGrenade(this.props.grenades[grenadeId])
+        })) as ExtendedGrenade[];
         if (currentGrenades) {
             grenades = currentGrenades.map(this.mapGrenade).filter(entry => entry !== null).flat() as RadarGrenadeObject[];
             grenadesStates.unshift(currentGrenades);
@@ -291,20 +302,32 @@ class App extends React.Component<IProps> {
         const offset = (size - (size * size / 1024)) / 2;
 
         const config = maps[this.props.mapName];
-
+        // eslint-disable-next-line
         const zooms = config && config.zooms || [];
 
         const activeZoom = zooms.find(zoom => zoom.threshold(players.map(pl => pl.player)));
-
-        const reverseZoom = 1/(activeZoom && activeZoom.zoom || 1);
+        // eslint-disable-next-line
+        const reverseZoom = 1 / (activeZoom && activeZoom.zoom || 1);
 
         // s*(1024-s)/2048
         if (!(this.props.mapName in maps)) {
-            return <div className="map-container" style={{ width: size, height: size, transform: `scale(${size / 1024})`, top: -offset, left: -offset }}>
+            return <div className="map-container" style={{
+                width: size,
+                height: size,
+                transform: `scale(${size / 1024})`,
+                top: -offset,
+                left: -offset
+            }}>
                 Unsupported map
             </div>;
         }
-        return <div className="map-container" style={{ width: size, height: size, transform: `scale(${size / 1024})`, top: -offset, left: -offset }}>
+        return <div className="map-container" style={{
+            width: size,
+            height: size,
+            transform: `scale(${size / 1024})`,
+            top: -offset,
+            left: -offset
+        }}>
             <LexoRadar
                 players={players}
                 grenades={grenades}
