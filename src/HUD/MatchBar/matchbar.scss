@@ -120,7 +120,8 @@
     font-weight: bold;
     z-index: 1;
     color: var(--white-full);
-    align-items: flex-end;
+    height: 32px;
+    align-items: center;
 
     &.hide {
       display: none;
@@ -187,8 +188,8 @@
       overflow: hidden;
 
       img {
-        max-width: 90%;
-        max-height: 65%;
+        max-width: unset;
+        max-height: 60px;
       }
     }
 
@@ -205,6 +206,10 @@
       .logo {
         justify-content: flex-end;
         border-bottom-left-radius: 12px;
+        padding-left: 10px;
+        img {
+          margin-right: auto;
+        }
       }
 
       &.T {
@@ -229,6 +234,10 @@
       .logo {
         justify-content: flex-start;
         border-bottom-right-radius: 12px;
+        padding-right: 10px;
+        img {
+          margin-left: auto;
+        }
       }
 
       &.T {
@@ -301,15 +310,16 @@
   position: fixed;
   display: none;
   opacity: 1;
-  width: 503px;
+  width: 450px;
   height: 50px;
-  top: 70px;
+  top: 85px;
   align-items: center;
-  color: black;
   justify-content: center;
   background-color: white;
   font-size: 20px;
   font-weight: 600;
+  border-radius: 12px;
+  color: var(--white-full) !important;
 
   &.show {
     display: flex;
@@ -318,11 +328,19 @@
   }
 
   &.right {
-    left: calc(50% + 71px);
+    left: calc(50% + 105px);
   }
 
   &.left {
-    right: calc(50% + 71px);
+    right: calc(50% + 105px);
+  }
+
+  &.CT {
+    background: linear-gradient(180deg, #00A3FF 0%, #0075FF 100%);
+  }
+
+  &.T {
+    background: linear-gradient(180deg, #FFC000 0%, #FF4B00 100%);
   }
 }
 

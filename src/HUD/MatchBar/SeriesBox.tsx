@@ -10,7 +10,6 @@ interface Props {
 
 export default class SeriesBox extends React.Component<Props> {
     render() {
-        console.log(this.props);
         const { match, map } = this.props;
         const amountOfMaps = (match && Math.floor(Number(match.matchType.substr(-1)) / 2) + 1) || 0;
         const bo = (match && Number(match.matchType.substr(-1))) || 0;

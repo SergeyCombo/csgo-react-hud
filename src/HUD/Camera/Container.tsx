@@ -4,9 +4,8 @@ import api from "../../api/api";
 import "./index.scss";
 
 
-
 const CameraContainer = ({ observedSteamid }: { observedSteamid: string | null }) => {
-    const [ players, setPlayers ] = useState<string[]>([]);
+    const [players, setPlayers] = useState<string[]>([]);
 
     useEffect(() => {
         api.camera.get().then(response => {
@@ -16,9 +15,10 @@ const CameraContainer = ({ observedSteamid }: { observedSteamid: string | null }
 
     return <div id="cameras-container">
         {
-            players.map(steamid => (<PlayerCamera key={steamid} steamid={steamid} visible={observedSteamid === steamid} />))
+            players.map(steamid => (
+                <PlayerCamera key={steamid} steamid={steamid} visible={observedSteamid === steamid}/>))
         }
-    </div>
-}
+    </div>;
+};
 
 export default CameraContainer;
