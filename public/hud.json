@@ -1,7 +1,7 @@
 {
-    "name":"Lexogrine HUD",
+    "name":"SGL INSIGHT HUD",
     "version":"2.4.0",
-    "author":"Lexogrine",
+    "author":"SGL INSIGHT",
     "legacy": false,
     "radar": true,
     "killfeed": true,

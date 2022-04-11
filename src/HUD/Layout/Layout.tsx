@@ -43,6 +43,8 @@ export default class Layout extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+      console.log(this.props, 'props');
+      console.log(this.state, 'state');
     GSI.on('roundEnd', score => {
       this.setState({ winner: score.winner, showWin: true }, () => {
         setTimeout(() => {

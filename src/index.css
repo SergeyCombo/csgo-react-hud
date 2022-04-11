@@ -12,7 +12,8 @@ body {
     font-family: 'BlatantCyrillic', 'Blatant', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /*background-image: url('./assets/bg.png');/**/
+    /*    background-image: url('./assets/bg.png');*/
+    background-color: #082435;
 }
 
 code {

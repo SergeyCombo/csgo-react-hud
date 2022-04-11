@@ -6,8 +6,9 @@ import "./observed.scss";
 import { ArmorHelmet, ArmorFull, HealthFull, Bullets } from './../../assets/Icons';
 import { Veto } from "../../api/interfaces";
 import { actions } from "../../App";
-
-import demoAva from './../../assets/images/demo_ava.png';
+import Defuse from "../Indicators/Defuse";
+import Bomb from "../Indicators/Bomb";
+import demoAva from "../../assets/images/demo_ava.png";
 
 export default class Observed extends React.Component<{ player: Player | null, veto: Veto | null, round: number }, { showCam: boolean }> {
     constructor(props: any) {
@@ -64,6 +65,8 @@ export default class Observed extends React.Component<{ player: Player | null, v
                 </div>
                 <div className="stats_row">
                     <div className="grenade_container">
+                        <Defuse player={player}/>
+                        <Bomb player={player}/>
                         {grenades.map(grenade =>
                             <React.Fragment
                                 key={`${player.steamid}_${grenade.name}_${grenade.ammo_reserve || 1}`}>
@@ -74,7 +77,7 @@ export default class Observed extends React.Component<{ player: Player | null, v
                             </React.Fragment>
                         )}
                     </div>
-                    {/*<Avatar steamid={player.steamid} height={140} width={140} showCam={this.state.showCam}
+                 {/*   <Avatar steamid={player.steamid} height={140} width={140} showCam={this.state.showCam}
                             slot={player.observer_slot}/>*/}
                     <div className={`avatar`}>
                         <img src={demoAva} height={140} width={140} alt={'Avatar'}/>

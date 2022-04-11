@@ -28,6 +28,7 @@
     .player {
       .row {
         flex-direction: row;
+        padding-left: 88px;
 
         .grenades {
           padding-right: 5px;
@@ -48,7 +49,6 @@
         .secondary_weapon {
           padding-right: 10px;
         }
-
       }
 
       .dead-stats {
@@ -57,6 +57,25 @@
 
       .player_data {
         border-top-right-radius: 12px;
+        overflow: hidden;
+      }
+
+      &.dead {
+        .player_data {
+          background-image: url("../../assets/images/dead_bg_left.png");
+        }
+      }
+    }
+
+    &.T {
+      .player .hp_bar {
+        background: linear-gradient(90deg, #FF9900 0%, #FFC000 100%);
+      }
+    }
+
+    &.CT {
+      .player .hp_bar {
+        background: linear-gradient(90deg, #0075FF 0%, #00A3FF 100%);
       }
     }
   }
@@ -67,6 +86,10 @@
     .player {
       flex-direction: row-reverse;
 
+      .row {
+        padding-right: 88px;
+      }
+
       .dead-stats {
         left: 8px;
       }
@@ -74,6 +97,7 @@
       .player_data {
         border-top-left-radius: 12px;
         flex-direction: row-reverse;
+        overflow: hidden;
 
         .hp_bar {
           align-self: flex-end;
@@ -113,8 +137,31 @@
         }
 
         .avatar {
-          justify-content: flex-start;
+          justify-content: center;
         }
+      }
+
+      .hp_bar {
+        left: unset;
+        right: 0;
+      }
+
+      &.dead {
+        .player_data {
+          background-image: url("../../assets/images/dead_bg_right.png");
+        }
+      }
+    }
+
+    &.T {
+      .player .hp_bar {
+        background: linear-gradient(270deg, #FF9900 0%, #FFC000 100%);
+      }
+    }
+
+    &.CT {
+      .player .hp_bar {
+        background: linear-gradient(270deg, #0075FF 0%, #00A3FF 100%);
       }
     }
   }
@@ -134,13 +181,17 @@
     }
 
     &.dead {
-      opacity: 0.7;
 
       .player_side_bar {
         background-color: var(--main-panel-color) !important;
       }
 
       .player_data {
+        background-color: unset;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        background-size: 100% 100%;
+
         .avatar {
           filter: grayscale(100%);
         }
@@ -214,7 +265,7 @@
     }
 
     .player_data {
-      background-color: var(--sub-panel-color);
+      background: rgba(39, 39, 39, 0.8);
       width: 415px;
       display: flex;
       flex-direction: row;
@@ -224,8 +275,8 @@
       .player_stats {
         display: flex;
         flex-direction: column;
-        flex: 1;
         min-width: 0;
+        width: 100%;
 
         .hp_bar {
           height: 2px;
@@ -236,9 +287,16 @@
         }
 
         .row {
-          flex: 1;
           display: flex;
           position: relative;
+
+          &:first-child {
+            height: 25px;
+          }
+
+          &:last-child {
+            height: 45px;
+          }
 
           svg.weapon {
             filter: invert(45%);
@@ -310,7 +368,7 @@
             }
 
             svg.weapon {
-              max-height: 30px;
+              max-height: 20px;
               width: auto;
               margin-left: 5px;
               margin-right: 5px;
@@ -336,6 +394,7 @@
             svg.grenade {
               max-height: 20px;
               height: 20px;
+              width: auto;
             }
           }
 
@@ -359,16 +418,23 @@
               height: 30px;
             }
           }
+
+          .hp_bar {
+            position: absolute;
+            height: 100%;
+          }
         }
       }
 
       .avatar {
-        width: 70px;
+        width: 80px;
+        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
         overflow: hidden;
-        position: relative;
+        position: absolute;
+        bottom: 0;
 
         .videofeed {
           width: 70px;
@@ -384,9 +450,21 @@
         }
 
         img {
-          border-radius: 50%;
+          width: auto;
+          height: 100%;
+          display: block;
+          z-index: 3;
         }
       }
+    }
+
+    .hp_wrapper {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
     }
   }
 }
