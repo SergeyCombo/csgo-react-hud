@@ -34,8 +34,8 @@ export default class PlayerBox extends React.Component<IProps> {
                     <div className="player_stats">
                         <div className="row">
                             <div className="hp_wrapper">
-                                <div className={`hp_bar`}
-                                     style={{ width: `${player.state.health}%` }}/>
+                                <div className={`hp_bar`} style={{ width: `${player.state.health}%` }}/>
+                                <div className={`hp_bar hp_bar__recent`} style={{ width: `${player.state.health}%` }}/>
                             </div>
                             <div className="username">
                                 <div>{player.name}</div>

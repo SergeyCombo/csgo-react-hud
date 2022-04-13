@@ -23,7 +23,7 @@
   }
 
   &.left {
-    left: 10px;
+    left: 20px;
 
     .player {
       .row {
@@ -69,7 +69,7 @@
   }
 
   &.right {
-    right: 10px;
+    right: 20px;
 
     .player {
       flex-direction: row-reverse;
@@ -142,10 +142,12 @@
               &:nth-child(2) {
                 flex-flow: row-reverse nowrap;
                 padding-right: 0;
+
                 .utils_container {
                   margin-right: auto;
                   margin-left: 0;
                 }
+
                 .grenades {
                   justify-content: flex-start;
                 }
@@ -191,6 +193,8 @@
 
     &.active {
       .player_data {
+        background: rgba(39, 39, 39, 0.4);
+
         .player_stats {
           .row {
             .observer_slot {
@@ -271,9 +275,17 @@
 
         .hp_bar {
           height: 2px;
+          z-index: 2;
 
           &.low {
             background-color: red;
+          }
+
+          &__recent {
+            z-index: 1;
+            background: unset;
+            background-color: #FF5E3A;
+            transition: width .2s ease;
           }
         }
 
@@ -365,7 +377,7 @@
             flex: 1;
             display: flex;
             align-items: center;
-            z-index: 1;
+            z-index: 3;
             color: white;
             font-weight: 600;
             max-width: calc(100% - 49px);
@@ -417,7 +429,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1;
+            z-index: 3;
             color: white;
             font-weight: 600;
             font-size: 18px;
@@ -595,21 +607,20 @@
 .players_alive {
   display: flex;
   flex-direction: column;
-  width: 180px;
+  width: 240px;
   background: rgba(39, 39, 39, 0.4);
   position: fixed;
-  left: 50%;
-  top: 85px;
+  right: 40px;
+  top: 20px;
   opacity: 1;
   transition: opacity 1s;
-  transform: translateX(-50%);
   border-radius: 0 0 8px 8px;
 
   .counter_container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 47px;
 
     > div {
       display: flex;
@@ -630,6 +641,23 @@
     }
 
     .team_counter {
+      &.T {
+        background: linear-gradient(146.31deg, #FFC000 26.67%, #FF4B00 80%), #FFFFFF;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        color: transparent;
+      }
+
+      &.CT {
+        background: linear-gradient(146.31deg, #00A3FF 15%, #0075FF 83.33%), #FFFFFF;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        color: transparent;
+      }
     }
   }
 

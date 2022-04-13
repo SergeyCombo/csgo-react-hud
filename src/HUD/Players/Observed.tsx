@@ -76,7 +76,9 @@ export default class Observed extends React.Component<{ player: Player | null, v
                             </React.Fragment>
                         )}
                     </div>
-                    <Avatar steamid={player.steamid} height={140} width={140} showCam={this.state.showCam}
+                    <Avatar steamid={player.steamid}
+                            height={170} width={170}
+                            showCam={this.state.showCam}
                             slot={player.observer_slot}/>
                     <div className="ammo">
                         <div className="ammo_icon_container">
