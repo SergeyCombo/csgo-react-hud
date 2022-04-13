@@ -6,6 +6,7 @@ import Bomb from "./../Timers/BombTimer";
 import Countdown from "./../Timers/Countdown";
 import { GSI } from "../../App";
 import { Match } from "../../api/interfaces";
+import SeriesIndicator from "../SeriesIndicator/SeriesIndicator";
 
 function stringToClock(time: string | number, pad = true) {
     if (typeof time === "string") {
@@ -187,21 +188,29 @@ export default class TeamBox extends React.Component<IProps, IState> {
                 else rightTimer = planting;
             }
         }
+
         return (
             <>
                 <div id={`matchbar`}>
                     <TeamScore team={left} orientation={"left"} timer={leftTimer}
                                showWin={winState.show && winState.side === "left"}/>
                     <div className={`score left ${left.side}`}>{left.score}</div>
-                    <div className="rounds_taken">
-
-                    </div>
+                    {
+                        match
+                            ? <SeriesIndicator team={match.left} matchType={match.matchType} side={left.side}/>
+                            : null
+                    }
                     <div id="timer" className={bo === 0 ? 'no-bo' : ''}>
                         <div id={`round_timer_text`} className={isPlanted ? "hide" : ""}>{time}</div>
                         <div id="round_now" className={isPlanted ? "hide" : ""}>
                             <span>round</span> {this.getRoundLabel()}</div>
                         <Bomb/>
                     </div>
+                    {
+                        match
+                            ? <SeriesIndicator team={match.right} matchType={match.matchType} side={right.side}/>
+                            : null
+                    }
                     <div className={`score right ${right.side}`}>{right.score}</div>
                     <TeamScore team={right} orientation={"right"} timer={rightTimer}
                                showWin={winState.show && winState.side === "right"}/>

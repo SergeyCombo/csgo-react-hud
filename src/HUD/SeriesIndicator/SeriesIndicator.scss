@@ -1,0 +1,31 @@
+.series_container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  max-height: 50px;
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  .match_cell {
+    width: 4px;
+    height: 100%;
+    max-height: 18px;
+    background: rgba(255, 255, 255, 0.3);
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    &.active {
+      &.CT {
+        background: linear-gradient(173.66deg, #00A3FF 0%, #0075FF 100%), #FFFFFF;
+      }
+
+      &.T {
+        background: linear-gradient(173.66deg, #FFC000 0%, #FF4B00 100%);
+      }
+    }
+  }
+}
