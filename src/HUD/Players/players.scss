@@ -186,7 +186,6 @@
   .player {
     width: 645px;
     height: 70px;
-    margin-bottom: 4px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -261,7 +260,7 @@
 
     .player_data {
       background: rgba(39, 39, 39, 0.8);
-      width: 415px;
+      width: 350px;
       display: flex;
       flex-direction: row;
       position: relative;
@@ -285,7 +284,7 @@
             z-index: 1;
             background: unset;
             background-color: #FF5E3A;
-            transition: width .2s ease;
+            transition: width .6s ease;
           }
         }
 
@@ -549,6 +548,10 @@
       top: 0;
       left: 0;
       overflow: hidden;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 4px;
     }
   }
 

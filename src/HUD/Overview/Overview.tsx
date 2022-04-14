@@ -30,7 +30,7 @@ interface IProps {
 }
 
 export default class Overview extends React.Component<IProps, IState> {
-    constructor(props: IProps){
+    constructor(props: IProps) {
         super(props);
         this.state = {
             player: {
@@ -46,21 +46,23 @@ export default class Overview extends React.Component<IProps, IState> {
                 data: null,
                 show: false,
             }
-        }
+        };
     }
+
     loadTeams = async () => {
         const { match } = this.state;
-        if(!match.data || !match.data.left.id || !match.data.right.id) return;
+        if (!match.data || !match.data.left.id || !match.data.right.id) return;
         const teams = await Promise.all([api.teams.getOne(match.data.left.id), api.teams.getOne(match.data.right.id)]);
-        if(!teams[0] || !teams[1]) return;
+        if (!teams[0] || !teams[1]) return;
         this.setState(state => {
             state.match.teams = teams;
             return state;
         });
-    }
+    };
+
     componentDidMount() {
         configs.onChange((data: any) => {
-            if(!data || !data.preview_settings) return;
+            if (!data || !data.preview_settings) return;
             this.setState({
                 player: {
                     data: (data.preview_settings.player_preview && data.preview_settings.player_preview.player) || null,
@@ -81,45 +83,48 @@ export default class Overview extends React.Component<IProps, IState> {
             this.setState(state => {
                 state.match.show = !state.match.show;
                 return state;
-            })
-        })
+            });
+        });
         actions.on("togglePlayerPreview", () => {
             this.setState(state => {
                 state.player.show = !state.player.show;
                 return state;
-            })
-        })
+            });
+        });
     }
+
     getVeto = () => {
         const { map, match } = this.props;
-        if(!match) return null;
-        const mapName = map.name.substring(map.name.lastIndexOf('/')+1);
+        if (!match) return null;
+        const mapName = map.name.substring(map.name.lastIndexOf('/') + 1);
         const veto = match.vetos.find(veto => veto.mapName === mapName);
-        if(!veto) return null;
+        if (!veto) return null;
         return veto;
-    }
+    };
     renderPlayer = () => {
         const { player } = this.state;
-        if(!player.data) return null;
-        return <PlayerOverview round={this.props.map.round + 1} player={player.data} players={this.props.players} show={player.show} veto={this.getVeto()} />
-    }
+        if (!player.data) return null;
+        return <PlayerOverview round={this.props.map.round + 1} player={player.data} players={this.props.players}
+                               show={player.show} veto={this.getVeto()}/>;
+    };
     renderMatch = () => {
         const { match } = this.state;
-        if(!match.data || !match.teams[0] || !match.teams[1]) return null;
-        return <MatchOverview match={match.data} show={match.show} veto={this.getVeto()} teams={match.teams}/>
-    }
+        if (!match.data || !match.teams[0] || !match.teams[1]) return null;
+        return <MatchOverview match={match.data} show={match.show} veto={this.getVeto()} teams={match.teams}/>;
+    };
     renderTeam = () => {
         const { team } = this.state;
-        if(!team.data) return null;
-        return <TeamOverview team={team.data} show={team.show} veto={this.getVeto()} />
-    }
-	render() {
-		return (
+        if (!team.data) return null;
+        return <TeamOverview team={team.data} show={team.show} veto={this.getVeto()}/>;
+    };
+
+    render() {
+        return (
             <>
                 {this.renderPlayer()}
                 {this.renderMatch()}
                 {this.renderTeam()}
             </>
         );
-	}
+    }
 }

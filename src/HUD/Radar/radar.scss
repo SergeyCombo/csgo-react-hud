@@ -30,6 +30,11 @@
   .map {
     perspective: 500px;
   }
+
+  #maps_container {
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+  }
 }
 
 .radar-component-container {
@@ -45,7 +50,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #272727;
+  border-bottom-right-radius: 12px;
+  transition: all 1s;
 }
 
 .veto_entry {
@@ -58,13 +65,14 @@
     align-items: center;
     color: white;
     text-transform: uppercase;
-    font-size: 10pt;
+    font-weight: 700;
+    font-size: 14px;
   }
 
   .team_logo {
+    margin-right: 4px;
     img {
       max-height: 23px;
-      padding-right: 3px;
       max-width: 23px;
     }
 
