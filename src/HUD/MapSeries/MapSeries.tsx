@@ -45,7 +45,7 @@ class VetoEntry extends React.Component<IVetoProps> {
 
 export default class MapSeries extends React.Component<IProps> {
     render() {
-        /*const { match, teams, isFreezetime, map } = this.props;
+        const { match, teams, isFreezetime, map } = this.props;
         if (!match || !match.vetos.length) return null;
         return (
             <div className={`map_series_container ${isFreezetime ? 'show' : 'hide'}`}>
@@ -64,10 +64,10 @@ export default class MapSeries extends React.Component<IProps> {
                     />;
                 })}
             </div>
-        );*/
+        );
 
         // const style: React.CSSProperties  = {backgroundImage}
-        return (
+        /*return (
             <div className={`map_series_container show`}>
                 <div className="title_bar">
                     <div className="col1">Map</div>
@@ -81,6 +81,6 @@ export default class MapSeries extends React.Component<IProps> {
                     <div className="col3">Score</div>
                 </div>
             </div>
-        );
+        );*/
     }
 }

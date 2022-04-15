@@ -6,8 +6,6 @@ import { actions } from './../../App';
 import Radar from './Radar';
 import TeamLogo from "../MatchBar/TeamLogo";
 
-import demoLogo from '../../assets/images/demo_logo.png';
-
 interface Props {
     match: Match | null,
     map: Map,
@@ -57,32 +55,6 @@ export default class RadarMaps extends React.Component<Props, State> {
                         ? <MapsBar match={this.props.match} map={this.props.map} game={this.props.game}/>
                         : null
                 }
-                <div id="maps_container">
-                    <div className="veto_entry">
-                        <div className="team_logo">
-                            <div className="logo">
-                                <img src={demoLogo} alt="$"/>
-                            </div>
-                        </div>
-                        <div className="map_name">de_dust2</div>
-                    </div>
-                    <div className="veto_entry">
-                        <div className="team_logo">
-                            <div className="logo">
-                                <img src={demoLogo} alt="$"/>
-                            </div>
-                        </div>
-                        <div className="map_name">overpass</div>
-                    </div>
-                    <div className="veto_entry">
-                        <div className="team_logo">
-                            <div className="logo">
-                                <img src={demoLogo} alt="$"/>
-                            </div>
-                        </div>
-                        <div className="map_name">nuke</div>
-                    </div>
-                </div>
             </div>
         );
     }
