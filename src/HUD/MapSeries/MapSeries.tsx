@@ -6,6 +6,11 @@ import "./mapseries.scss";
 
 import de_ancient from '../../assets/series_bg/de_ancient.jpg';
 import de_dust2 from '../../assets/series_bg/de_dust2.jpg';
+import de_inferno from '../../assets/series_bg/de_inferno.jpg';
+import de_mirage from '../../assets/series_bg/de_mirage.jpg';
+import de_nuke from '../../assets/series_bg/de_nuke.jpg';
+import de_overpass from '../../assets/series_bg/de_overpass.jpg';
+import de_vertigo from '../../assets/series_bg/de_vertigo.jpg';
 
 interface IProps {
     match: Match | null;
@@ -45,40 +50,50 @@ class VetoEntry extends React.Component<IVetoProps> {
 
 export default class MapSeries extends React.Component<IProps> {
     render() {
-        const { match, teams, isFreezetime, map } = this.props;
-        if (!match || !match.vetos.length) return null;
-        return (
-            <div className={`map_series_container ${isFreezetime ? 'show' : 'hide'}`}>
-                <div className="title_bar">
-                    <div className="picked">Picked</div>
-                    <div className="winner">Winner</div>
-                    <div className="score">Score</div>
+            const { match, teams, isFreezetime, map } = this.props;
+            if (!match || !match.vetos.length) return null;
+            return (
+                <div className={`map_series_container ${isFreezetime ? 'show' : 'hide'}`}>
+                    <div className="title_bar">
+                        <div className="picked">Picked</div>
+                        <div className="winner">Winner</div>
+                        <div className="score">Score</div>
+                    </div>
+                    {match.vetos.filter(veto => veto.type !== "ban").map(veto => {
+                        if (!veto.mapName) return null;
+                        return <VetoEntry
+                            key={`${match.id}${veto.mapName}${veto.teamId}${veto.side}`}
+                            veto={veto}
+                            teams={teams}
+                            active={map.name.includes(veto.mapName)}
+                        />;
+                    })}
                 </div>
-                {match.vetos.filter(veto => veto.type !== "ban").map(veto => {
-                    if (!veto.mapName) return null;
-                    return <VetoEntry
-                        key={`${match.id}${veto.mapName}${veto.teamId}${veto.side}`}
-                        veto={veto}
-                        teams={teams}
-                        active={map.name.includes(veto.mapName)}
-                    />;
-                })}
-            </div>
-        );
+            );
 
-        // const style: React.CSSProperties  = {backgroundImage}
-        /*return (
+   /*     const style: React.CSSProperties = { backgroundImage: `url(${de_nuke})` };
+
+        return (
             <div className={`map_series_container show`}>
                 <div className="title_bar">
                     <div className="col1">Map</div>
                     <div className="col2">Winner</div>
                     <div className="col3">Score</div>
                 </div>
-                <div className={`veto_container`}
-                     style={{ backgroundImage: `url(../../assets/series_bg/de_dust2.jpg)` }}>
-                    <div className="col1">Map</div>
-                    <div className="col2">Winner</div>
-                    <div className="col3">Score</div>
+                <div className={`veto_container`} style={style}>
+                    <div className="col1">1</div>
+                    <div className="col2">2</div>
+                    <div className="col3">3</div>
+                </div>
+                <div className={`veto_container veto_container__active`} style={style}>
+                    <div className="col1">1</div>
+                    <div className="col2">2</div>
+                    <div className="col3">3</div>
+                </div>
+                <div className={`veto_container`} style={style}>
+                    <div className="col1">1</div>
+                    <div className="col2">2</div>
+                    <div className="col3">3</div>
                 </div>
             </div>
         );*/

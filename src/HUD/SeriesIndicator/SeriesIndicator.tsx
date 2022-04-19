@@ -33,7 +33,7 @@ export default class SeriesIndicator extends React.Component<IProps> {
         return (
             <div className="series_container">
                 {new Array(this.matchCells()).fill(0).map((_, i) => (
-                    <div className={`match_cell ${i < team.wins ? 'active' : ''} ${side}`}/>
+                    <div key={i} className={`match_cell ${i < team.wins ? 'active' : ''} ${side}`}/>
                 ))}
             </div>
         );
