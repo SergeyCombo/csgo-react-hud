@@ -189,7 +189,7 @@
       overflow: hidden;
 
       img {
-        max-width: unset;
+        max-width: 60px;
         max-height: 60px;
       }
     }
@@ -498,7 +498,7 @@
 }
 
 .series_wins {
-  display: flex;
+  display: none;
   flex-direction: row;
   width: 400px;
   height: 30px;
