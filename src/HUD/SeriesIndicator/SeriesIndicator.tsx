@@ -1,39 +1,23 @@
 import React from 'react';
 import './SeriesIndicator.scss';
+import * as I from "csgogsi-socket";
+import { Match } from "../../api/interfaces";
 
 interface IProps {
-    matchType: "bo1" | "bo2" | "bo3" | "bo5",
+    match: Match,
     side: "CT" | "T",
-    team: {
-        id: string | null;
-        wins: number;
-    };
+    team: I.Team
 }
 
 export default class SeriesIndicator extends React.Component<IProps> {
-    matchCells() {
-        const { matchType } = this.props;
-        switch (matchType) {
-            case "bo1":
-                return 1;
-            case "bo2":
-                return 1;
-            case "bo3":
-                return 2;
-            case "bo5":
-                return 3;
-            default:
-                return 1;
-        }
-    }
-
     render() {
-        const { matchType, team, side } = this.props;
-        if (matchType === "bo1") return null;
+        const { team, side, match } = this.props;
+        const amountOfMaps = (match && Math.floor(Number(match.matchType.substr(-1)) / 2) + 1) || 0;
+        if (!match || match.matchType === "bo1") return null;
         return (
             <div className="series_container">
-                {new Array(this.matchCells()).fill(0).map((_, i) => (
-                    <div key={i} className={`match_cell ${i < team.wins ? 'active' : ''} ${side}`}/>
+                {new Array(amountOfMaps).fill(0).map((_, i) => (
+                    <div key={i} className={`match_cell ${i < team.matches_won_this_series ? 'active' : ''} ${side}`}/>
                 ))}
             </div>
         );

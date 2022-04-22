@@ -208,6 +208,7 @@
         justify-content: flex-end;
         border-bottom-left-radius: 12px;
         padding-left: 10px;
+
         img {
           margin-right: auto;
         }
@@ -236,6 +237,7 @@
         justify-content: flex-start;
         border-bottom-right-radius: 12px;
         padding-right: 10px;
+
         img {
           margin-left: auto;
         }
@@ -290,6 +292,7 @@
     font-size: 36px;
     color: var(--white-full);
     margin-right: auto;
+
     &.right {
       margin-left: auto;
       margin-right: 0;
@@ -389,7 +392,18 @@
     .defuse_plant_bar {
       margin-right: auto;
       border-radius: 0 4px 4px 0;
-      background: linear-gradient(270deg, #00A3FF 0%, #0075FF 100%), #FF5E3A;
+    }
+
+    &.CT {
+      .defuse_plant_bar {
+        background: linear-gradient(270deg, #00A3FF 0%, #0075FF 100%);
+      }
+    }
+
+    &.T {
+      .defuse_plant_bar {
+        background: linear-gradient(270deg, #FFC000 0%, #FF4B00 100%);
+      }
     }
 
     .defuse_plant_caption {
@@ -404,7 +418,18 @@
     .defuse_plant_bar {
       margin-left: auto;
       border-radius: 4px 0 0 4px;
-      background: linear-gradient(90deg, #00A3FF 0%, #0075FF 100%), #FF5E3A;
+    }
+
+    &.CT {
+      .defuse_plant_bar {
+        background: linear-gradient(90deg, #00A3FF 0%, #0075FF 100%);
+      }
+    }
+
+    &.T {
+      .defuse_plant_bar {
+        background: linear-gradient(90deg, #FFC000 0%, #FF4B00 100%);
+      }
     }
 
     .defuse_plant_caption {

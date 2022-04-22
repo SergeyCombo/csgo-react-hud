@@ -52,7 +52,7 @@ class VetoEntry extends React.Component<IVetoProps> {
 export default class MapSeries extends React.Component<IProps> {
     render() {
 
-        const { match, teams, isFreezetime } = this.props;
+        const { match, teams, isFreezetime, map } = this.props;
         if (!match || !match.vetos.length) return null;
         /*        return (
                        <div className={`map_series_container ${isFreezetime ? 'show' : 'hide'}`}>
@@ -98,7 +98,7 @@ export default class MapSeries extends React.Component<IProps> {
                     const [, cleanMapName] = veto.mapName.split('_');
 
                     const col3 = () => {
-                        if (veto.mapEnd) {
+                        if (!map.name.includes(veto.mapName)) {
                             return (
                                 <div className={'col3__score'}>
                                     <TeamLogo team={teams.find(team => team.id !== veto.winner)}/>

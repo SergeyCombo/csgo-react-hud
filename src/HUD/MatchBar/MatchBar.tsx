@@ -197,7 +197,7 @@ export default class TeamBox extends React.Component<IProps, IState> {
                     <div className={`score left ${left.side}`}>{left.score}</div>
                     {
                         match
-                            ? <SeriesIndicator team={match.left} matchType={match.matchType} side={left.side}/>
+                            ? <SeriesIndicator team={left} match={match} side={left.side}/>
                             : null
                     }
                     <div id="timer" className={bo === 0 ? 'no-bo' : ''}>
@@ -208,7 +208,7 @@ export default class TeamBox extends React.Component<IProps, IState> {
                     </div>
                     {
                         match
-                            ? <SeriesIndicator team={match.right} matchType={match.matchType} side={right.side}/>
+                            ? <SeriesIndicator team={right} match={match} side={right.side}/>
                             : null
                     }
                     <div className={`score right ${right.side}`}>{right.score}</div>
