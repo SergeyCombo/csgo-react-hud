@@ -99,13 +99,23 @@ export default class MapSeries extends React.Component<IProps> {
 
                     const col3 = () => {
                         if (!map.name.includes(veto.mapName)) {
-                            return (
-                                <div className={'col3__score'}>
-                                    <TeamLogo team={teams.find(team => team.id !== veto.winner)}/>
-                                    <span>{Object.values((veto.score || ['-', '-'])).sort((a, b) => a - b).join(" : ")}</span>
-                                    <TeamLogo team={teams.find(team => team.id === veto.winner)}/>
-                                </div>
-                            );
+                            if (!veto.score) {
+                                return (
+                                    <div className={'col3__score'}>
+                                        <TeamLogo team={teams[0]}/>
+                                        <span>- : -</span>
+                                        <TeamLogo team={teams[1]}/>
+                                    </div>
+                                );
+                            } else {
+                                return (
+                                    <div className={'col3__score'}>
+                                        <TeamLogo team={teams.find(team => team.id !== veto.winner)}/>
+                                        <span>{Object.values((veto.score || ['-', '-'])).sort((a, b) => a - b).join(" : ")}</span>
+                                        <TeamLogo team={teams.find(team => team.id === veto.winner)}/>
+                                    </div>
+                                );
+                            }
                         } else {
                             return (<div className={'col3__inProgress'}>PLAYING NOW</div>);
                         }
